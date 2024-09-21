@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "75452197150",
+    "project_id": "simplefirebase-a267b",
+    "storage_bucket": "simplefirebase-a267b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:75452197150:android:becfa7f70ea95fd361410f",
+        "android_client_info": {
+          "package_name": "com.example.flutter_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "75452197150-c33optcl5cfj1h7sm7edgodeqntle3f1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8tm9nlcEXduf-WplWK65F7NxWRNNXkWk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "75452197150-c33optcl5cfj1h7sm7edgodeqntle3f1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
