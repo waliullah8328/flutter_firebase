@@ -1,6 +1,9 @@
 import 'package:get/get.dart';
 
 
+import '../screens/btm/bottom_nav_screen.dart';
+import '../screens/home/screen/home_screen.dart';
+import '../screens/home/subs_screens/cart/cart_screen.dart';
 import '../screens/login/login_screen.dart';
 import '../screens/signup/sign_up_screen.dart';
 import 'routes.dart';
@@ -16,7 +19,7 @@ class Pages {
       name: Routes.signUpScreen,
       page: () => SignUpScreen(),
     ),
-    /*
+
     GetPage(
       name: Routes.btmNavScreen,
       page: () => BottomNavScreen(),
@@ -30,6 +33,6 @@ class Pages {
       page: () => CartScreen(),
     ),
 
-     */
+
   ];
 }

@@ -1,5 +1,5 @@
 class Strings{
-  static String appName = "E-Commerz";
+  static String appName = "E-Commerce";
 
   // login screen texts
   static String loginScreen = "Login Screen";

@@ -11,6 +11,7 @@ import 'package:get_storage/get_storage.dart';
 import '../../routes/routes.dart';
 import '../../services/firebase_service.dart';
 import '../../utils/app_config.dart';
+import '../btm/bottom_nav_screen.dart';
 
 
 class LoginController extends GetxController{
@@ -19,6 +20,8 @@ class LoginController extends GetxController{
   RxInt selectValue = 1.obs;
   RxBool isChecked = false.obs;
   final box = GetStorage();
+
+
 
   @override
   void onInit() {
@@ -69,7 +72,11 @@ class LoginController extends GetxController{
         debugPrint("Valid User");
 
         Get.snackbar("Login Successfully", "You are ready to go");
-        Get.offAllNamed(Routes.btmNavScreen);
+
+        box.write("Login", true);
+
+        Get.to(()=>BottomNavScreen());
+        //Get.offAllNamed(Routes.btmNavScreen);
       // }else{
       //   debugPrint("Invalid User");
       // }

@@ -1,16 +1,15 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_firebase/utils/logger.dart';
 import 'package:get/get.dart';
 
-import '../backend/models/banners_model.dart';
-import '../backend/models/product_model.dart';
-import '../routes/routes.dart';
-import '../toast_message.dart';
-import 'local_storage.dart';
 
+import '../../common_widget/toast_message.dart';
+import '../../routes/routes.dart';
+import '../../services/local_storage.dart';
+import '../models/banners_model.dart';
+import '../models/product_model.dart';
 
 
 class FirebaseServices {
@@ -25,6 +24,7 @@ class FirebaseServices {
   static const String banners = "banners";
   static const String ordersInfo = "ordersInfo";
   static const String popularProducts = "popularProducts";
+  static const String newProducts = "newProduct";
 
   /// auth
   Future<UserCredential> createUserWithEmailAndPassword(
@@ -52,7 +52,7 @@ class FirebaseServices {
       e.toString().redConsole;
       ToastMessage.error(e.toString());
       throw UnimplementedError();
-                   }
+    }
   }
 
   static Future<UserCredential> signInWithEmailAndPassword(
@@ -140,8 +140,6 @@ class FirebaseServices {
     }
   }
 
-
-
   static Future<List<BannerModel>?> fetchBanner()async{
     try{
       final QuerySnapshot<Map<String, dynamic>> snapshot = await _fireStore.collection(banners).get();
@@ -171,7 +169,25 @@ class FirebaseServices {
 
       return bannerList;
     }catch(e){
-      "Error From fetch banner in firebase services".bgRedConsole;
+      "Error From fetch popular product in firebase services".bgRedConsole;
+      e.toString().redConsole;
+      return null;
+    }
+  }
+
+  static Future<List<ProductModel>?> fetchNewProduct()async{
+    try{
+      final QuerySnapshot<Map<String, dynamic>> snapshot = await _fireStore.collection(newProducts).get();
+
+      List<ProductModel> bannerList = snapshot.docs.map((doc) {
+        final data = doc.data();
+        return ProductModel.fromJson(data);
+      }).toList();
+
+
+      return bannerList;
+    }catch(e){
+      "Error From fetch popular product in firebase services".bgRedConsole;
       e.toString().redConsole;
       return null;
     }
@@ -191,7 +207,8 @@ class FirebaseServices {
   static Stream<QuerySnapshot<Map<String, dynamic>>> myOrdersStream() =>
       _fireStore.collection(ordersInfo).where("userId", isEqualTo: user.uid).snapshots();
 
+  static fetchBestSellingProducts() {}
 
 
-   static Stream<QuerySnapshot<Map<String, dynamic>>> ordersStream() => _fireStore.collection(ordersInfo).snapshots();
+  // static Stream<QuerySnapshot<Map<String, dynamic>>> ordersStream() => _fireStore.collection(ordersInfo).snapshots();
 }
